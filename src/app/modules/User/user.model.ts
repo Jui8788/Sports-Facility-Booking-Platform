@@ -4,42 +4,38 @@ import { USER_ROLE } from './user.constant'
 import config from '../../config/config'
 import bcrypt from 'bcrypt'
 
-const userSchema = new Schema<TUser, UserModel>(
-  {
-    name: {
-      type: String,
-      required: [true, 'Name is required'],
-      trim: true,
-    },
-
-    email: {
-      type: String,
-      required: [true, 'Name is required'],
-      unique: true,
-      trim: true,
-    },
-
-    password: {
-      type: String,
-      required: [true, 'Password is required'],
-      select: 0,
-    },
-
-    role: {
-      type: String,
-      required: [true, 'Role is required'],
-      enum: Object.keys(USER_ROLE),
-    },
-
-    address: {
-      type: String,
-      required: [true, 'Address is required'],
-      trim: true,
-    },
+const userSchema = new Schema<TUser, UserModel>({
+  name: {
+    type: String,
+    required: [true, 'Name is required'],
+    trim: true,
   },
 
-  { timestamps: true }
-)
+  email: {
+    type: String,
+    required: [true, 'Name is required'],
+    unique: true,
+    trim: true,
+  },
+
+  password: {
+    type: String,
+    required: [true, 'Password is required'],
+    select: 0,
+  },
+
+  role: {
+    type: String,
+    required: [true, 'Role is required'],
+    enum: Object.keys(USER_ROLE),
+  },
+
+  address: {
+    type: String,
+    required: [true, 'Address is required'],
+    trim: true,
+  },
+})
 
 userSchema.pre('save', async function (next) {
   const user = this
