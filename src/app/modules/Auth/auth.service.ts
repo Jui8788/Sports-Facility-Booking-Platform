@@ -5,7 +5,7 @@ import { User } from '../User/user.model'
 import { TLoginUser } from './auth.interface'
 import { createToken } from './auth.utils'
 
-const register = async (payload: TUser): Promise<any> => {
+const signup = async (payload: TUser): Promise<any> => {
   //user existence check
   const user = await User.findOne({ email: payload.email })
 
@@ -61,6 +61,6 @@ const login = async (payload: TLoginUser) => {
 }
 
 export const AuthServices = {
-  register,
+  signup,
   login,
 }
