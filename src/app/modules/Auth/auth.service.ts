@@ -1,5 +1,4 @@
 import config from '../../config/config'
-import { USER_ROLE } from '../User/user.constant'
 import { TUser } from '../User/user.interface'
 import { User } from '../User/user.model'
 import { TLoginUser } from './auth.interface'

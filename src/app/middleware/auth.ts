@@ -8,7 +8,6 @@ import { TUserRole } from '../modules/User/user.interface'
 export const auth = (...requiredRoles: TUserRole[]) => {
   return catchAsync(async (req, res, next) => {
     const accessToken = req.header('Authorization')?.replace('Bearer ', '')
-    console.log(accessToken)
 
     if (!accessToken) {
       throw new AppError(401, 'You are not authorized to access this route')
