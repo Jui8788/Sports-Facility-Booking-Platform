@@ -19,7 +19,7 @@ const signup = catchAsync(async (req, res) => {
 const login = catchAsync(async (req, res) => {
   const result = await AuthServices.login(req.body)
 
-  const { accessToken, refreshToken, user } = result
+  const { accessToken, refreshToken, data } = result
 
   res.cookie('refreshToken', refreshToken, {
     httpOnly: true,
@@ -32,7 +32,7 @@ const login = catchAsync(async (req, res) => {
     success: true,
     message: 'User logged in successfully!',
     token: accessToken,
-    data: user,
+    data: data,
   })
 })
 
