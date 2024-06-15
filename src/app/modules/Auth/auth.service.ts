@@ -14,7 +14,7 @@ const signup = async (payload: TUser): Promise<any> => {
   }
 
   //set user role
-  payload.role = USER_ROLE.user
+  payload.role = USER_ROLE.admin
 
   //create user
   const newUser = await User.create(payload)
@@ -55,6 +55,7 @@ const login = async (payload: TLoginUser) => {
   )
 
   return {
+    user,
     accessToken,
     refreshToken,
   }

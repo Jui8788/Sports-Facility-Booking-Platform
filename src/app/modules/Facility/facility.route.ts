@@ -13,19 +13,8 @@ router.post(
   validateRequest(FacilityValidations.createFacilityValidationSchema),
   FacilityControllers.createFacility
 )
-
-// router.put(
-//   "/:userId",
-//   auth(USER_ROLE.ADMIN, USER_ROLE.SUPER_ADMIN),
-//   validateRequest(UserValidations.updateUserValidations),
-//   UserControllers.updateUser
-// );
-
-// router.put(
-//   "/me",
-//   auth(USER_ROLE.ADMIN, USER_ROLE.SUPER_ADMIN, USER_ROLE.USER),
-//   validateRequest(UserValidations.updateUserValidations),
-//   UserControllers.updateUser
-// );
+router.get('/', FacilityControllers.getAllFacility)
+router.put('/:id', auth(USER_ROLE.admin), FacilityControllers.updateFacility)
+router.delete('/:id', auth(USER_ROLE.admin), FacilityControllers.deleteFacility)
 
 export const FacilityRoutes = router

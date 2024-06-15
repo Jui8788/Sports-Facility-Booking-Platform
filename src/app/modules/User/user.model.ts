@@ -30,6 +30,8 @@ const userSchema = new Schema<TUser, UserModel>({
     enum: Object.keys(USER_ROLE),
   },
 
+  phone: { type: String, required: [true, 'Contact number is required'] },
+
   address: {
     type: String,
     required: [true, 'Address is required'],
