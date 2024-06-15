@@ -18,7 +18,17 @@ const signup = async (payload: TUser): Promise<any> => {
 
   //create user
   const newUser = await User.create(payload)
-  return newUser
+  const { _id, name, email, role, phone, address } = newUser
+  return {
+    data: {
+      _id,
+      name,
+      email,
+      role,
+      phone,
+      address,
+    },
+  }
 }
 
 const login = async (payload: TLoginUser) => {
