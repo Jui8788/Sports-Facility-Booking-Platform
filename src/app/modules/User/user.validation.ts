@@ -1,37 +1,20 @@
 import { z } from 'zod'
+import { USER_ROLE } from './user.constant'
 
-const signUpSchema = z.object({
+const createUserValidation = z.object({
   body: z.object({
-    name: z.string().min(1, { message: 'Name is required' }).trim(),
+    name: z.string().trim().min(1, 'Name is required'),
     email: z
       .string()
-      .email({ message: 'Invalid email format' })
-      .min(1, { message: 'Email is required' })
-      .trim(),
-    password: z
-      .string()
-      .min(6, { message: 'Password must be at least 6 characters long' }),
-    phone: z.string().min(1, { message: 'Phone number is required' }).trim(),
-    role: z.enum(['admin', 'user']),
-    address: z.string().min(1, { message: 'Address is required' }).trim(),
-  }),
-})
-
-const loginSchema = z.object({
-  body: z.object({
-    email: z
-      .string()
-      .email({ message: 'Invalid email format' })
-      .min(1, { message: 'Email is required' })
-      .trim(),
-
-    password: z
-      .string()
-      .min(6, { message: 'Password must be at least 6 characters long' }),
+      .trim()
+      .email('Invalid email format')
+      .min(1, 'Email is required'),
+    password: z.string().min(1, 'Password is required'),
+    role: z.nativeEnum(USER_ROLE).default(USER_ROLE.admin),
+    address: z.string().trim().min(1, 'Address is required'),
   }),
 })
 
 export const UserValidations = {
-  signUpSchema,
-  loginSchema,
+  createUserValidation,
 }

@@ -74,7 +74,7 @@ import { User } from '../modules/User/user.model'
 
 export const auth = (...requiredRoles: (keyof typeof USER_ROLE)[]) => {
   return catchAsync(async (req, res, next) => {
-    const accessToken = req.headers.authorization
+    const accessToken = req.header('Authorization')?.replace('Bearer ', '')
 
     if (!accessToken) {
       throw new AppError(401, 'You are not authorized to access this route')
