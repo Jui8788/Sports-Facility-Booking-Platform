@@ -40,7 +40,7 @@ The Sports Facility Booking Platform is a backend application that allows users 
 Clone the repository:
 
 ```
-git clone [https://github.com/yourusername/sports-facility-booking.git](https://github.com/Shabbir8788/Sports-Facility-Booking-Platform.git)
+git clone https://github.com/Shabbir8788/Sports-Facility-Booking-Platform.git
 cd sports-facility-booking
 ```
 
