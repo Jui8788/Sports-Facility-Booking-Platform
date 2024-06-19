@@ -80,9 +80,9 @@ npm run start:prod
 
 ```json
 {
-  "name": "Programming Hero",
-  "email": "web@programming-hero.com",
-  "password": "programming-hero",
+  "name": "Programming",
+  "email": "web@programming.com",
+  "password": "programming",
   "phone": "01322901105",
   "role": "admin", // or 'user'
   "address": "Level-4, 34, Awal Centre, Banani, Dhaka"
@@ -97,8 +97,8 @@ npm run start:prod
   "message": "User registered successfully",
   "data": {
     "_id": "60d9c4e4f3b4b544b8b8d1c4",
-    "name": "Programming Hero",
-    "email": "web@programming-hero.com",
+    "name": "Programming",
+    "email": "web@programming.com",
     "role": "admin",
     "phone": "01322901105",
     "address": "Level-4, 34, Awal Centre, Banani, Dhaka"
@@ -111,8 +111,8 @@ npm run start:prod
 
 ```json
 {
-  "email": "web@programming-hero.com",
-  "password": "programming-hero"
+  "email": "web@programming.com",
+  "password": "programming"
 }
 ```
 
@@ -125,8 +125,8 @@ npm run start:prod
   "token": "JWT_TOKEN",
   "data": {
     "_id": "60d9c4e4f3b4b544b8b8d1c4",
-    "name": "Programming Hero",
-    "email": "web@programming-hero.com",
+    "name": "Programming",
+    "email": "web@programming.com",
     "role": "admin",
     "phone": "01322901105",
     "address": "Level-4, 34, Awal Centre, Ban Myeni, Dhaka"
@@ -382,8 +382,8 @@ Authorization: Bearer JWT_TOKEN
       "endTime": "13:00",
       "user": {
         "_id": "60d9c4e4f3b4b544b8b8d1c4",
-        "name": "Programming Hero",
-        "email": "programming.hero@example.com",
+        "name": "Programming",
+        "email": "programming@example.com",
         "phone": "+1234567890",
         "role": "user",
         "address": "456 Elm Street"
