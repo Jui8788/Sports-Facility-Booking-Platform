@@ -1,8 +1,9 @@
-﻿Sports Facility Booking Platform
-Overview
+﻿# Sports Facility Booking Platform
+
+## Overview
 The Sports Facility Booking Platform is a backend application that allows users to book sports facilities hassle-free. Built using TypeScript, Express.js, and Mongoose, this platform provides essential functionalities like user authentication, facility management, and booking operations. Admin users have enhanced capabilities to manage facilities and view all bookings.
 
-Table of Contents
+## Table of Contents
 Features
 Technology Stack
 Installation
