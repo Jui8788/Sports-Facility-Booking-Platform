@@ -35,13 +35,16 @@ The Sports Facility Booking Platform is a backend application that allows users 
 - **Web Framework**: Express.js
 - **ODM & Validation Library**: Mongoose for MongoDB
 - **Validation**: Zod
-Installation
-Clone the repository:
 
+## Installation
+Clone the repository:
+```
 sh
 Copy code
 git clone [https://github.com/yourusername/sports-facility-booking.git](https://github.com/Shabbir8788/Sports-Facility-Booking-Platform.git)
 cd sports-facility-booking
+```
+
 Install dependencies:
 
 sh
