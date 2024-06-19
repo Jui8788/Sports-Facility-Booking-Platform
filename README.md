@@ -74,22 +74,23 @@ npm run start:prod
 ### API Documentation
 
 #### User Routes
-Sign Up
-Route: POST /api/auth/signup
-Request Body:
-json
-Copy code
+1. **User Sign Up**
+*   **Route**: `POST /api/auth/signup`
+*   **Request Body**:
+
+```json
 {
   "name": "Programming Hero",
   "email": "web@programming-hero.com",
   "password": "programming-hero",
   "phone": "01322901105",
-  "role": "admin",
+  "role": "admin", // or 'user'
   "address": "Level-4, 34, Awal Centre, Banani, Dhaka"
 }
-Response:
-json
-Copy code
+```
+
+* **Response:**
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -103,6 +104,7 @@ Copy code
     "address": "Level-4, 34, Awal Centre, Banani, Dhaka"
   }
 }
+```
 Login
 Route: POST /api/auth/login
 Request Body:
