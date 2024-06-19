@@ -105,18 +105,19 @@ npm run start:prod
   }
 }
 ```
-Login
-Route: POST /api/auth/login
-Request Body:
-json
-Copy code
+2. **User Login**
+*   **Route**: `POST /api/auth/login`
+*   **Request Body**:
+
+```json
 {
   "email": "web@programming-hero.com",
   "password": "programming-hero"
 }
-Response:
-json
-Copy code
+```
+
+* **Response:**
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -128,25 +129,31 @@ Copy code
     "email": "web@programming-hero.com",
     "role": "admin",
     "phone": "01322901105",
-    "address": "Level-4, 34, Awal Centre, Banani, Dhaka"
+    "address": "Level-4, 34, Awal Centre, Ban Myeni, Dhaka"
   }
 }
-Facility Routes
-Create a Facility (Admin Only)
-Route: POST /api/facility
-Headers: Authorization: Bearer JWT_TOKEN
-Request Body:
-json
-Copy code
+```
+
+#### Facility Routes
+
+3. **Create a Facility (Admin Only)**
+*   **Route**: `POST /api/facility`
+*   **Headers**:
+
+```plain
+Authorization: Bearer JWT_TOKEN
+```
+
+```json
 {
   "name": "Tennis Court",
   "description": "Outdoor tennis court with synthetic surface.",
   "pricePerHour": 30,
   "location": "456 Sports Ave, Springfield"
 }
-Response:
-json
-Copy code
+```
+
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -160,21 +167,27 @@ Copy code
     "isDeleted": false
   }
 }
-Update a Facility (Admin Only)
-Route: PUT /api/facility/:id
-Headers: Authorization: Bearer JWT_TOKEN
-Request Body:
-json
-Copy code
+```
+
+4. **Update a Facility (Admin Only)**
+*   **Route**: `PUT /api/facility/:id`
+*   **Headers**:
+
+```plain
+Authorization: Bearer JWT_TOKEN
+```
+
+```json
 {
   "name": "Updated Tennis Court",
   "description": "Updated outdoor tennis court with synthetic surface.",
   "pricePerHour": 35,
   "location": "789 Sports Ave, Springfield"
 }
-Response:
-json
-Copy code
+```
+
+* **Response**
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -188,30 +201,41 @@ Copy code
     "isDeleted": false
   }
 }
-Delete a Facility - Soft Delete (Admin Only)
-Route: DELETE /api/facility/:id
-Headers: Authorization: Bearer JWT_TOKEN
-Response:
-json
-Copy code
+```
+
+5. **Delete a Facility - Soft Delete (Admin Only)**
+*   **Route**: `DELETE /api/facility/:id`
+*   **Headers**:
+
+```plain
+      Authorization: Bearer JWT_TOKEN
+```
+
+*   **Response**:
+
+```json
 {
   "success": true,
   "statusCode": 200,
   "message": "Facility deleted successfully",
   "data": {
-    "_id": "60d9c4e4f3b4b544b8b8d1c5",
-    "name": "Updated Tennis Court",
-    "description": "Updated outdoor tennis court with synthetic surface.",
-    "pricePerHour": 35,
-    "location": "789 Sports Ave, Springfield",
-    "isDeleted": true
-  }
+      "_id": "60d9c4e4f3b4b544b8b8d1c5",
+      "name": "Updated Tennis Court",
+      "description": "Updated outdoor tennis court with synthetic surface.",
+      "pricePerHour": 35,
+      "location": "789 Sports Ave, Springfield",
+      "isDeleted": true
+    }
 }
-Get All Facilities
-Route: GET /api/facility
-Response:
-json
-Copy code
+
+```
+
+**6\. Get All Facilities**
+
+*  **Route**: `GET /api/facility`
+*  **Response**:
+
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -227,43 +251,87 @@ Copy code
     }
   ]
 }
-Booking Routes
-Check Availability
-Route: GET /api/check-availability
-Query Parameters: date (optional, format: YYYY-MM-DD)
-Response:
-json
-Copy code
+```
+
+#### Booking Routes
+
+### 7\. Check Availability
+
+Check the availability of time slots for booking on a specific date.
+
+*   **Route**: `GET /api/check-availability`
+
+#### Query Parameters
+
+*   **date** (`string`, optional): The date for which availability is to be checked. Format: `YYYY-MM-DD`. If not provided, today's date will be used by default.
+
+#### Response
+
+  *   **success** (`boolean`): Indicates whether the request was successful.
+  *   **statusCode** (`number`): HTTP status code of the response.
+  *   **message** (`string`): Descriptive message indicating the outcome of the request.
+  *   **data** (`Array` of `Object`): Array containing information about available time slots.
+
+##### Time Slot Object
+
+  *   **startTime** (`string`): The start time of the available slot.
+  *   **endTime** (`string`): The end time of the available slot.
+
+#### Example Request
+
+```sql
+GET /api/check-availability?date=2024-06-15
+```
+
+#### Example Response
+
+```json
 {
   "success": true,
   "statusCode": 200,
   "message": "Availability checked successfully",
   "data": [
-    {
-      "startTime": "08:00",
-      "endTime": "10:00"
-    },
-    {
-      "startTime": "14:00",
-      "endTime": "16:00"
-    }
-  ]
+      {
+          "startTime": "08:00",
+          "endTime": "10:00"
+      },
+      {
+          "startTime": "14:00",
+          "endTime": "16:00"
+      }
+   ]
 }
-Create a Booking (User Only)
-Route: POST /api/bookings
-Headers: Authorization: Bearer JWT_TOKEN
-Request Body:
-json
-Copy code
+```
+
+  
+
+**Hints**:
+
+*   Parse the optional `date` query parameter from the request URL. If not provided, use today's date.
+*   Retrieve bookings for the specified date from your database using Mongoose.
+*   Define a function to find available time range based on the bookings retrieved. Compare booked time range to the total available time slots for the day.
+*   Return a response containing the available time slots in the specified format. Use `res.json()` to send the response.
+
+
+**8\. Create a Booking (User Only)**
+
+  *   **Route**: `POST /api/bookings`
+  *   **Headers**:
+
+```plain
+Authorization: Bearer JWT_TOKEN
+```
+
+```json
 {
   "facility": "60d9c4e4f3b4b544b8b8d1c5",
   "date": "2024-06-15",
   "startTime": "10:00",
   "endTime": "13:00"
 }
-Response:
-json
-Copy code
+```
+* **Response:**
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -279,12 +347,21 @@ Copy code
     "isBooked": "confirmed"
   }
 }
-View All Bookings (Admin Only)
-Route: GET /api/bookings
-Headers: Authorization: Bearer JWT_TOKEN
-Response:
-json
-Copy code
+```
+
+`If the facility is unavailable during the requested time slot, an error response is returned.`
+
+**9\. View All Bookings (Admin Only)**
+
+  *   **Route**: `GET /api/bookings`
+  *   **Headers**:
+
+```plain
+Authorization: Bearer JWT_TOKEN
+```
+
+* **Response:**
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -312,16 +389,22 @@ Copy code
         "address": "456 Elm Street"
       },
       "payableAmount": 90,
-      "isBooked": "confirmed"
+      "isBooked": " confirmed"
     }
   ]
 }
-View Bookings by User (User Only)
-Route: GET /api/bookings/user
-Headers: Authorization: Bearer JWT_TOKEN
-Response:
-json
-Copy code
+```
+
+**10\. View Bookings by User (User Only)**
+
+  *   **Route**: `GET /api/bookings/user`
+  *   **Headers**:
+
+```plain
+Authorization: Bearer JWT_TOKEN
+```
+
+```json
 {
   "success": true,
   "statusCode": 200,
@@ -342,38 +425,46 @@ Copy code
       "endTime": "13:00",
       "user": "60d9c4e4f3b4b544b8b8d1c4",
       "payableAmount": 90,
-      "isBooked": "confirmed"
+      "isBooked": " confirmed"
     }
   ]
 }
-Cancel a Booking (User Only)
-Route: DELETE /api/bookings/:id
-Headers: Authorization: Bearer JWT_TOKEN
-Response:
-json
-Copy code
+```
+
+**11\. Cancel a Booking (User Only)**
+
+  *   **Route**: `DELETE /api/bookings/:id`
+  *   **Headers**:
+
+```plain
+Authorization: Bearer JWT_TOKEN
+```
+
+```json
 {
   "success": true,
   "statusCode": 200,
   "message": "Booking cancelled successfully",
   "data": {
-    "_id": "60d9c4e4f3b4b544b8b8d1c6",
-    "facility": {
-      "_id": "60d9c4e4f3b4b544b8b8d1c5",
-      "name": "Tennis Court",
-      "description": "Outdoor tennis court with professional-grade surface.",
-      "pricePerHour": 30,
-      "location": "123 Main Street",
-      "isDeleted": false
-    },
-    "date": "2024-06-15",
-    "startTime": "10:00",
-    "endTime": "13:00",
-    "user": "60d9c4e4f3b4b544b8b8d1c4",
-    "payableAmount": 90,
-    "isBooked": "canceled"
-  }
+      "_id": "60d9c4e4f3b4b544b8b8d1c6",
+      "facility": {
+        "_id": "60d9c4e4f3b4b544b8b8d1c5",
+        "name": "Tennis Court",
+        "description": "Outdoor tennis court with professional-grade surface.",
+        "pricePerHour": 30,
+        "location": "123 Main Street",
+        "isDeleted": false
+      },
+      "date": "2024-06-15",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "user": "60d9c4e4f3b4b544b8b8d1c4",
+      "payableAmount": 90,
+      "isBooked": "canceled"
+    }
 }
+```
+
 Bonus Features
 No Data Found
 When retrieving data, if the database collection is empty or no matching data is found, the following response is returned:
