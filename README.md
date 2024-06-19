@@ -53,8 +53,12 @@ npm install
 Create a .env file in the root directory and add the following environment variables:
 ```
 PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
+DATABASE_URL=your_mongodb_uri
+BCRYPT_SALT_ROUNDS=your_bcrypt_salt_rounds
+JWT_ACCESS_SECRET=your_jwt_access_secret
+JWT_REFRESH_SECRET=your_jwt_refresh_secret
+JWT_ACCESS_EXPIRES_IN=your_jwt_access_expires_in
+JWT_REFRESH_EXPIRES_IN=your_jwt_refresh_expires_in
 ```
 
 ## Running the Application
@@ -63,10 +67,9 @@ Start the development server:
 npm run start:dev
 ```
 Start the production server:
-
-sh
-Copy code
+```
 npm run start:prod
+```
 API Documentation
 User Routes
 Sign Up
