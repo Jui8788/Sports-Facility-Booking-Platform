@@ -2,9 +2,9 @@ import express, { Application } from 'express'
 import cors from 'cors'
 import globalErrorHandler from './app/middleware/globalErrorHandler'
 import NotFound from './app/middleware/notFound'
-import { AuthRoutes } from './app/modules/Auth/auth.route'
 import cookieParser from 'cookie-parser'
 import router from './app/routes'
+import { BookingControllers } from './app/modules/Booking/booking.controller'
 
 const app: Application = express()
 
@@ -15,6 +15,8 @@ app.use(cors({ origin: ['http://localhost:5173'] }))
 
 // application routes
 app.use('/api', router)
+
+app.get('/api/check-availability', BookingControllers.checkAvailability)
 
 // globalErrorHandler
 app.use(globalErrorHandler)

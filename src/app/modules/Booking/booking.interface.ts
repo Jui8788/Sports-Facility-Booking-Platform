@@ -1,13 +1,11 @@
-import { Schema } from 'mongoose'
-
-export type BookingStatus = 'confirmed' | 'unconfirmed' | 'canceled'
+import { Types } from 'mongoose'
 
 export type TBooking = {
   date: Date
   startTime: Date
   endTime: Date
-  user: Schema.Types.ObjectId
-  facility: Schema.Types.ObjectId
+  user: Types.ObjectId
+  facility: Types.ObjectId
   payableAmount: number
-  isBooked: BookingStatus
+  isBooked: 'confirmed' | 'unconfirmed' | 'canceled'
 }

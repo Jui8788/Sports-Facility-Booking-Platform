@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // name: The name of the user.
 // email: The contact email address.
 // password: The account password (must be hashed).
@@ -9,6 +10,7 @@ import { Model } from 'mongoose'
 import { USER_ROLE } from './user.constant'
 
 export interface TUser {
+  _id?: string
   name: string
   email: string
   password: string
