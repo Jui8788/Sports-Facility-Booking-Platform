@@ -71,9 +71,9 @@ Start the production server:
 npm run start:prod
 ```
 
-## API Documentation
+### API Documentation
 
-** User Routes
+#### User Routes
 Sign Up
 Route: POST /api/auth/signup
 Request Body:
