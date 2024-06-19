@@ -465,64 +465,78 @@ Authorization: Bearer JWT_TOKEN
 }
 ```
 
-Bonus Features
-No Data Found
+## Bonus Features
+
+### No Data Found
 When retrieving data, if the database collection is empty or no matching data is found, the following response is returned:
 
-json
-Copy code
+```json
 {
   "success": false,
   "statusCode": 404,
   "message": "No Data Found",
-  "data": []
+  "data":[]
 }
-Error Handling
+```
+
+### Error Handling
 Implement proper error handling throughout the application. Use global error handling middleware to catch and handle errors, providing appropriate error responses with error messages.
 
-Error Response
-json
-Copy code
-{
-  "success": false,
-  "message": "E11000 duplicate key error collection: univerity-management.students index: email_1 dup key: { email: \"user2@gmail.com\" }",
-  "errorMessages": [
-    {
-      "path": "",
-      "message": "E11000 duplicate key error collection: project index: email_1 dup key: { email: \"user2@gmail.com\" }"
-    }
-  ],
-  "stack": "MongoServerError: E11000 duplicate key error collection: project index: email_1 dup key: { email: \"user2@gmail.com\" } at ..."
-}
-Authentication Middleware
-Implement an Authentication Middleware to authenticate your application, ensuring that only users and admins can access their own routes.
+**Error Response Object Should include the following properties:**
 
-Unauthorized Access Response
-json
-Copy code
+*   success → false
+*   message → Error Type → Validation Error, Cast Error, Duplicate Entry
+*   errorMessages
+*   stack
+
+  
+
+**Sample Error Response**
+
+```json
+   {
+    "success": false,
+    "message": "E11000 duplicate key error collection: univerity-management.students index: email_1 dup key: { email: \\"user2@gmail.com\\" }",
+    "errorMessages": [
+        {
+            "path": "",
+            "message": "E11000 duplicate key error collection: project index: email_1 dup key: { email: \\"user2@gmail.com\\" }"
+        }
+    ],
+    "stack": "MongoServerError: E11000 duplicate key error collection: project index: email_1 dup key: { email: \\"user2@gmail.com\\" }\\n    at H:\\\\next-level-development\\\\project-management-auth-service\\\\node_modules\\\\mongodb\\\\src\\\\operations\\\\insert.ts:85:25\\n    at H:\\\\next-level-development\\\\university-management-auth-service\\\\node_modules\\\\mongodb\\\\src\\\\cmap\\\\connection_pool.ts:574:11\\n    at H:\\\\next-level-development\\\\university-writeOrBuffer (node:internal/streams/writable:391:12)"
+}
+```
+
+### **4\. Authentication Middleware:**
+
+Implement an Authentication Middleware to authenticate your application. Ensures that only user  and admin can access their own accessible routes.
+
+```json
 {
   "success": false,
   "statusCode": 401,
-  "message": "You have no access to this route"
+  "message": "You have no access to this route",
 }
-Not Found Route
-Implement a global "Not Found" handler for unmatched routes. When a route is not found, respond with a generic message.
+```
 
-Not Found Response
-json
-Copy code
+### **3\. Not Found Route:**
+
+Implement a global "Not Found" handler for unmatched routes. When a route is not found, respond with a generic message: "Not Found.”
+
+```json
 {
   "success": false,
   "statusCode": 404,
-  "message": "Not Found"
+  "message": "Not Found",
 }
-Validation
-Use Zod for input validation, ensuring data consistency. When validation fails, a 400 Bad Request status code is returned, accompanied by detailed error messages specifying the erroneous fields and reasons.
+```
+### **5\. Zod Validation:**
+The API employs Zod for input validation, ensuring data consistency. When validation fails, a 400 Bad Request status code is returned, accompanied by detailed error messages specifying the erroneous fields and reasons.
 
-Contributing
+## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any changes.
 
-License
+## License
 This project is licensed under the License.
 
 
