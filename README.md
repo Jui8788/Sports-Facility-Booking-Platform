@@ -44,11 +44,10 @@ git clone https://github.com/Shabbir8788/Sports-Facility-Booking-Platform.git
 cd sports-facility-booking
 ```
 
-Install dependencies:
-
-sh
-Copy code
+## Install dependencies:
+```
 npm install
+```
 Environment Variables
 Create a .env file in the root directory and add the following environment variables:
 
