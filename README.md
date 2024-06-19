@@ -29,11 +29,12 @@ The Sports Facility Booking Platform is a backend application that allows users 
 - Error Handling: Proper error handling with detailed error responses.
 - Authentication & Authorization: JWT-based authentication and role-based access control.
 - Validation: Input validation using Zod.
-Technology Stack
-Programming Language: TypeScript
-Web Framework: Express.js
-ODM & Validation Library: Mongoose for MongoDB
-Validation: Zod
+
+## Technology Stack
+- Programming Language: TypeScript
+- Web Framework: Express.js
+- ODM & Validation Library: Mongoose for MongoDB
+- Validation: Zod
 Installation
 Clone the repository:
 
