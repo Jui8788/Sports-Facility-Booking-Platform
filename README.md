@@ -5,21 +5,21 @@ The Sports Facility Booking Platform is a backend application that allows users 
 
 ## Table of Contents
 - [Features](#features)
-- Technology Stack
-- Installation
-- Environment Variables
-- Running the Application
-- API Documentation
-- User Routes
-- Facility Routes
-- Booking Routes
-- Bonus Features
-- Error Handling
-- Authentication Middleware
-- Not Found Route
-- Validation
-- Contributing
-- License
+- [Technology Stack](#technology-stack)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Running the Application](#running-the-application)
+- [API Documentation](#api-documentation)
+- [User Routes](#user-routes)
+- [Facility Routes](#facility-routes)
+- [Booking Routes](#booking-routes)
+- [Bonus Features](#bonus-features)
+- [Error Handling](#error-handling)
+- [Authentication Middleware](#authentication-middleware)
+- [Not Found Route](#not-found-route)
+- [Validation](#validation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 User Management: Users can sign up and log in.
