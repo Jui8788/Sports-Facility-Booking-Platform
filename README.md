@@ -48,21 +48,20 @@ cd sports-facility-booking
 ```
 npm install
 ```
-Environment Variables
-Create a .env file in the root directory and add the following environment variables:
 
-makefile
-Copy code
+## Environment Variables
+Create a .env file in the root directory and add the following environment variables:
+```
 PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
-Running the Application
+```
+
+## Running the Application
 Start the development server:
-
-sh
-Copy code
+```
 npm run start:dev
-
+```
 Start the production server:
 
 sh
