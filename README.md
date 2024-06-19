@@ -22,13 +22,13 @@ The Sports Facility Booking Platform is a backend application that allows users 
 - [License](#license)
 
 ## Features
-User Management: Users can sign up and log in.
-Facility Management: Admin users can create, update, view, and soft delete facilities.
-Booking Management: Users can check availability, create bookings, view their bookings, and cancel bookings.
-Admin Features: Admin users can view all bookings.
-Error Handling: Proper error handling with detailed error responses.
-Authentication & Authorization: JWT-based authentication and role-based access control.
-Validation: Input validation using Zod.
+- User Management: Users can sign up and log in.
+- Facility Management: Admin users can create, update, view, and soft delete facilities.
+- Booking Management: Users can check availability, create bookings, view their bookings, and cancel bookings.
+- Admin Features: Admin users can view all bookings.
+- Error Handling: Proper error handling with detailed error responses.
+- Authentication & Authorization: JWT-based authentication and role-based access control.
+- Validation: Input validation using Zod.
 Technology Stack
 Programming Language: TypeScript
 Web Framework: Express.js
