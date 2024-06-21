@@ -13,7 +13,7 @@ const userSchema = new Schema<TUser, UserModel>({
 
   email: {
     type: String,
-    required: [true, 'Name is required'],
+    required: [true, 'Email is required'],
     unique: true,
     trim: true,
   },

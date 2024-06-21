@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ErrorRequestHandler } from 'express'
 import { ZodError } from 'zod'
 import { TErrorSource } from '../interface/error'
@@ -8,7 +10,7 @@ import handleDuplicateError from '../errors/handleDuplicateError'
 import AppError from '../errors/AppError'
 import config from '../config/config'
 
-const globalErrorHandler: ErrorRequestHandler = (error, req, res) => {
+const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   // setting default values
   let statusCode = 500
   let message = 'Something went wrong'
