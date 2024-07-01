@@ -1,4 +1,5 @@
-import express, { Application, Request, Response } from 'express'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import express, { Application, NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import globalErrorHandler from './app/middleware/globalErrorHandler'
 import NotFound from './app/middleware/notFound'
@@ -26,6 +27,8 @@ app.get('/api/check-availability', BookingControllers.checkAvailability)
 app.use(NotFound)
 
 // globalErrorHandler
-app.use(globalErrorHandler)
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+  globalErrorHandler(error, req, res, next)
+})
 
 export default app

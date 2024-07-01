@@ -12,10 +12,6 @@ import AppError from '../errors/AppError'
 import config from '../config/config'
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
-  if (!res || typeof res.status !== 'function') {
-    console.error('Invalid response object:', res)
-    return next(error)
-  }
   // setting default values
   let statusCode = 500
   let message = 'Something went wrong'
