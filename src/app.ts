@@ -22,10 +22,10 @@ app.get('/', (req: Request, res: Response) => {
 
 app.get('/api/check-availability', BookingControllers.checkAvailability)
 
-// globalErrorHandler
-app.use(globalErrorHandler)
-
 // Not Found Route
 app.use(NotFound)
+
+// globalErrorHandler
+app.use(globalErrorHandler)
 
 export default app
