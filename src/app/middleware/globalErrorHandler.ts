@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ErrorRequestHandler, Response } from 'express'
+import { ErrorRequestHandler } from 'express'
 import { ZodError } from 'zod'
 import { TErrorSource } from '../interface/error'
 import handleZodError from '../errors/handleZodError'
@@ -11,15 +11,10 @@ import handleDuplicateError from '../errors/handleDuplicateError'
 import AppError from '../errors/AppError'
 import config from '../config/config'
 
-const globalErrorHandler: ErrorRequestHandler = (
-  error,
-  req,
-  res: Response,
-  next
-) => {
+const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   if (!res || typeof res.status !== 'function') {
     console.error('Invalid response object:', res)
-    return
+    return next(error)
   }
   // setting default values
   let statusCode = 500
