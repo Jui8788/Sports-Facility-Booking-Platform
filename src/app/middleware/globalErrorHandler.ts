@@ -63,12 +63,23 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   }
 
   // ultimate return
-  return res.status(statusCode).json({
-    success: false,
-    message,
-    errorSources,
-    stack: config.NODE_ENV === 'development' ? error?.stack : null,
-  })
+  // return res.status(statusCode).json({
+  //   success: false,
+  //   message,
+  //   errorSources,
+  //   stack: config.NODE_ENV === 'development' ? error?.stack : null,
+  // })
+  if (!res.headersSent) {
+    res.status(statusCode).json({
+      success: false,
+      message,
+      errorSources,
+      stack: config.NODE_ENV === 'development' ? error?.stack : null,
+    })
+  } else {
+    // Handle case where headers were already sent
+    console.error('Headers were already sent. Cannot send error response.')
+  }
 }
 
 export default globalErrorHandler
