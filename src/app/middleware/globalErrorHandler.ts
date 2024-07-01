@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ErrorRequestHandler, Response } from 'express'
@@ -16,6 +17,10 @@ const globalErrorHandler: ErrorRequestHandler = (
   res: Response,
   next
 ) => {
+  if (!res || typeof res.status !== 'function') {
+    console.error('Invalid response object:', res)
+    return
+  }
   // setting default values
   let statusCode = 500
   let message = 'Something went wrong'
