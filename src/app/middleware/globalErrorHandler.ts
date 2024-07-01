@@ -141,21 +141,12 @@ const globalErrorHandler: ErrorRequestHandler = (
   }
 
   // ultimate return
-  // return res.status(statusCode).json({
-  //   success: false,
-  //   message,
-  //   errorSources,
-  //   stack: config.NODE_ENV === 'development' ? error?.stack : null,
-  // })
-  const response = {
+  return res.status(statusCode).json({
     success: false,
     message,
     errorSources,
-    stack: config.NODE_ENV === 'development' ? error?.stack : undefined,
-  }
-
-  // Convert the response to res.send()
-  res.status(statusCode).send(response)
+    stack: config.NODE_ENV === 'development' ? error?.stack : null,
+  })
 }
 
 export default globalErrorHandler
