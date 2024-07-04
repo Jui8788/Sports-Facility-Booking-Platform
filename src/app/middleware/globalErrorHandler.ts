@@ -84,10 +84,8 @@ import AppError from '../errors/AppError'
 import config from '../config/config'
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
-  // setting default values
   let statusCode = 500
   let message = 'Something went wrong'
-
   let errorSources: TErrorSource = [
     {
       path: '',
@@ -134,8 +132,7 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     ]
   }
 
-  // ultimate return
-  return res.status(statusCode).json({
+  res.status(statusCode).json({
     success: false,
     message,
     errorSources,
