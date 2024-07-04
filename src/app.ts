@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import express, { Application, Request, Response, NextFunction } from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
@@ -13,12 +15,14 @@ app.use(cookieParser())
 app.use(cors({ origin: ['http://localhost:5173'] }))
 
 app.use('/api', router)
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!')
 })
+
 app.get('/api/check-availability', BookingControllers.checkAvailability)
 
-// 404 handler
+// notFound handler
 app.use(NotFound)
 
 // Global error handler
