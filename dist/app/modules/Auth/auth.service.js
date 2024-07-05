@@ -58,6 +58,7 @@ const login = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         accessToken,
         refreshToken,
         data: {
+            _id: user._id,
             name: user.name,
             email: user.email,
             role: user.role,

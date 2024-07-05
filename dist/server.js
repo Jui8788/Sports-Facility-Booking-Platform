@@ -12,9 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable no-console */
 const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
 const config_1 = __importDefault(require("./app/config/config"));
+let server;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -29,3 +31,16 @@ function main() {
     });
 }
 main();
+process.on('unhandledRejection', () => {
+    console.log(`unhandledRejection is detected. Shutting down...`);
+    if (server) {
+        server.close(() => {
+            process.exit(1);
+        });
+    }
+    process.exit(1);
+});
+process.on('uncaughtException', () => {
+    console.log(`uncaughtException is detected. Shutting down...`);
+    process.exit(1);
+});
